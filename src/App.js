@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import SearchInput from './components/SearchInput'
+
 
 function App() {
+  /* TODO: With the help of "useState", you should connect the "SearchInput" field */
+  const [value, setValue] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <grid>
+      <h1>Juliette's movies</h1>
+      <SearchInput
+        value={value}
+        onChange={ event => setValue(event.target.value)}
+      />
+      <p>{value}</p>
+    </grid>
+  )
+};
 
 export default App;
