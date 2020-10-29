@@ -7,30 +7,30 @@ import SearchInput from './components/SearchInput'
 function App() {
   /* TODO: With the help of "useState", you should connect the "SearchInput" field */
   const [query, setQuery] = useState('Lord of the Rings')
+  const [movies, setMovies] = useState([])
+  
   useEffect(() => {
-    // Update the document title using the browser API
         axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: 'dbb2cac3572068ef8027a64c000f9389',
-          query: query
+          query,
         },
       })
       .then(res => {
         console.log(res.data)
-        Object.values(res.data.results).forEach(element => {
-          <li>{element['title']}</li>
-        });
-      })},
-  );
+        setMovies(res.data.results);
+      });
+    }, [query])
 
   return (
-    <grid>
+    <div>
       <h1>Juliette's movies</h1>
       <SearchInput
         value={query}
         onChange={ event => setQuery(event.target.value)}
       />
-    </grid>
+      {movies.map(movie => <p key={movie.id}>{movie.title}</p>)}
+    </div>
   )
 };
 
