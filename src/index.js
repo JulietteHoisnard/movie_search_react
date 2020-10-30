@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Catch from './components/Catch';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Catch>
     <App />
-  </React.StrictMode>,
+  </Catch>,
   document.getElementById('root')
 );
 
