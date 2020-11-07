@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SearchInput from './components/SearchInput'
 import Catch from './components/Catch'
-import { MovieSearch } from './containers/MovieDb'
+import { MovieSearch } from './containers/movieDb'
 
 function App() {
   /* TODO: With the help of "useState", you should connect the "SearchInput" field */
