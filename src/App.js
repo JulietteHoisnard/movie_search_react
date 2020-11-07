@@ -1,11 +1,11 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import SearchInput from './components/SearchInput'
+import Catch from './components/Catch'
+import { MovieSearch } from './containers/MovieDb'
 
 function App() {
   /* TODO: With the help of "useState", you should connect the "SearchInput" field */
   const [query, setQuery] = useState('Lord of the Rings');
-  const movies = useMovieSearch(query);
 
   return (
     <div>
@@ -14,37 +14,15 @@ function App() {
         value={query}
         onChange={ event => setQuery(event.target.value)}
       />
-      {movies && movies.map(movie => <p key={movie.id}>{movie.title}</p>)}
+      <Catch>
+        <MovieSearch query={query}>
+          {movies =>
+          movies && movies.map(movie => <p key={movie.id}>{movie.title}</p>)
+          }
+        </MovieSearch>
+      </Catch>
     </div>
   )
 };
-
-
-function useMovieSearch(query) {
-  const [state, setState] = useState({movies: null, error: null})
-  
-  useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/search/movie', {
-      params: {
-        api_key: 'dbb2cac3572068ef8027a64c000f9389',
-        query,
-      },
-    })
-    .then(res => {
-      console.log(res.data)
-      setState({ movies: res.data.results, error: null });
-    })
-    .catch(error => {
-      setState({ error, movies: null})
-    })
-  }, [query])
-
-  if (state.error) {
-    throw state.error
-  }
-
-  return state.movies
-}
-
 
 export default App;
