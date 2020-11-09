@@ -1,33 +1,49 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useReducer, useEffect } from "react";
+import axios from "axios";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "empty":
+      return { error: null, movies: [] };
+    case "success":
+      return { error: null, movies: action.res.data.results };
+    case "error":
+      return { error: action.error, movies: null };
+    default:
+      throw new Error(`Invalid action type ${action.type}`);
+  }
+}
+
+const initialState = { movies: null, error: null };
 
 export function useMovieSearch(query) {
-  const [state, setState] = useState({movies: null, error: null})
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  
   useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/search/movie', {
-      params: {
-        api_key: 'dbb2cac3572068ef8027a64c000f9389',
-        query,
-      },
-    })
-    .then(res => {
-      setState({ movies: res.data.results, error: null });
-    })
-    .catch(error => {
-      setState({ error, movies: null})
-    })
-  }, [query])
+    if (!query) dispatch({ type: "empty" });
+    axios
+      .get("https://api.themoviedb.org/3/search/movie", {
+        params: {
+          api_key: "dbb2cac3572068ef8027a64c000f9389",
+          query,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: "success", res });
+      })
+      .catch((error) => {
+        dispatch({ type: "error", error });
+      });
+  }, [query]);
 
   if (state.error) {
-    throw state.error
+    throw state.error;
   }
 
-  return state.movies
+  return state.movies;
 }
 
 export function MovieSearch({ query, children }) {
-  const movies = useMovieSearch(query)
-  return children(movies)
+  const movies = useMovieSearch(query);
+  return children(movies);
 }

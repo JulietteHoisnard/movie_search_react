@@ -4,9 +4,9 @@ export default function SearchInput(props) {
   return (
     <input
       type="search"
-      placeholder="Type something"
+      placeholder="Type something..."
       width="100%"
       {...props}
     />
-  )
+  );
 }
