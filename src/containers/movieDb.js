@@ -20,7 +20,10 @@ export function useMovieSearch(query) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (!query) dispatch({ type: "empty" });
+    if (!query) {
+      dispatch({ type: "empty" });
+      return;
+    }
     axios
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
