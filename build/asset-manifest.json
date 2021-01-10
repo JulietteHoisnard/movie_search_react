@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/movie_search_react/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/movie_search_react/static/js/main.8d327afb.chunk.js",
+    "main.js.map": "/movie_search_react/static/js/main.8d327afb.chunk.js.map",
+    "runtime-main.js": "/movie_search_react/static/js/runtime-main.cad4862b.js",
+    "runtime-main.js.map": "/movie_search_react/static/js/runtime-main.cad4862b.js.map",
+    "static/js/2.c2933952.chunk.js": "/movie_search_react/static/js/2.c2933952.chunk.js",
+    "static/js/2.c2933952.chunk.js.map": "/movie_search_react/static/js/2.c2933952.chunk.js.map",
+    "static/js/3.96500a38.chunk.js": "/movie_search_react/static/js/3.96500a38.chunk.js",
+    "static/js/3.96500a38.chunk.js.map": "/movie_search_react/static/js/3.96500a38.chunk.js.map",
+    "index.html": "/movie_search_react/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/movie_search_react/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.c2933952.chunk.js.LICENSE.txt": "/movie_search_react/static/js/2.c2933952.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cad4862b.js",
+    "static/js/2.c2933952.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.8d327afb.chunk.js"
+  ]
+}
